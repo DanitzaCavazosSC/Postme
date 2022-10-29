@@ -27,7 +27,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 // Cuando se cargue todo nuestro DOM
-window.addEventListener('load', async() => {
+window.addEventListener('load', async () => {
   MAIN = document.querySelector('#main');
   MODAL_POST = document.querySelector('#modal-post-section');
   BTN_SHOW_POST = document.querySelector('#btn-upload-post');
