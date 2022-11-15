@@ -12,6 +12,7 @@ const showPostModal = () => {
   setTimeout(() => {
     MODAL_POST.style.transform = 'translateY(0)';
   }, 1);
+  
 };
 const closePostModal = () => {
   MAIN.style.display = 'block';
@@ -44,9 +45,9 @@ window.addEventListener('load', async() => {
         const ready = await navigator.serviceWorker.ready;
         ready.showNotification('Hola curso-pwa', {
           body: 'Este será un mensaje largo',
-          vibrate: [200, 100, 200, 100, 200, 100, 200] 
-      });
-      console.info('Service worker registrado');
+          vibrate: [200, 100, 200, 100, 200, 100, 200]
+        });
+        console.info('Service worker registrado');
     }
   }
 
@@ -61,4 +62,4 @@ window.addEventListener('load', async() => {
     }
   });
   
-})
+});
