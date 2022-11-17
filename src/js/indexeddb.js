@@ -27,6 +27,10 @@ conexion.onerror = (error) =>{
     console.log('Error ', error)
 }
 
+/*
+    Funciones para manejar la base de datos indexedDB
+*/
+
 //Función que permite agregar un registro a la colección, enviándole un objeto con el fomato { clave : int, ... }
 const agregar = (info) => {
     //Definir el tipo de transaccion y sobre que colección se realizará
