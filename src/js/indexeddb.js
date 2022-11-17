@@ -26,3 +26,73 @@ conexion.onupgradeneeded = (e) =>{
 conexion.onerror = (error) =>{
     console.log('Error ', error)
 }
+
+//Función que permite agregar un registro a la colección, enviándole un objeto con el fomato { clave : int, ... }
+const agregar = (info) => {
+    //Definir el tipo de transaccion y sobre que colección se realizará
+    const trasaccion = db.transaction(['tareas'],'readwrite')
+    //Obtener la colección de la transacción
+    const coleccionObjetos = trasaccion.objectStore('tareas')
+    //Ejecutar el método deseado sobre la colección obtenida
+    const conexion = coleccionObjetos.add(data)
+    //Llamada a la función que lee toda la colección
+    consultar()
+}
+
+//Función que permite obtener un registro, enviándele la clave del registro
+const obtener = (clave) =>{
+    const trasaccion = db.transaction(['tareas'],'readonly')
+    const coleccionObjetos = trasaccion.objectStore('tareas')
+    const conexion = coleccionObjetos.get(clave)
+
+    conexion.onsuccess = (e) =>{
+        console.log(conexion.result)
+    }
+    
+}
+
+//Función que permite actulizar un registro de la colección, enviándole un objeto con el fomato { clave : clave_registro int, ... }
+const actualizar = (data) =>{    
+    const trasaccion = db.transaction(['tareas'],'readwrite')
+    const coleccionObjetos = trasaccion.objectStore('tareas')
+    const conexion = coleccionObjetos.put(data)
+    
+    conexion.onsuccess = () =>{
+        consultar()
+    }
+}
+
+//Función que permite eliminar un registro a la colección, enviándele la clave del registro
+const eliminar = (clave) =>{      
+    const trasaccion = db.transaction(['tareas'],'readwrite')
+    const coleccionObjetos = trasaccion.objectStore('tareas')
+    const conexion = coleccionObjetos.delete(clave)
+
+    conexion.onsuccess = () =>{
+        consultar()
+    }
+}
+
+//Función que permite obtener todos los registros de la colección
+const consultar = () =>{
+    const trasaccion = db.transaction(['tareas'],'readonly')
+    const coleccionObjetos = trasaccion.objectStore('tareas')
+    const conexion = coleccionObjetos.openCursor()
+
+    console.log('Lista de tareas')
+    
+    //Escuchar el evento onsuccess del método openCursor()
+    conexion.onsuccess = (e) =>{
+        //Obtener el cursor de la colección
+        const cursor = e.target.result
+        //Si el cursor es falso imprimir mensaje de lista vacía o recorrido terminado
+        if(cursor){
+            //Mostrar por consola el valor del cursor (registro en esa posición del cursor)
+            console.log(cursor.value)
+            //Avanzar detro del cursor
+            cursor.continue()
+        }else{
+            console.log('No hay tareas en la lista')
+        }
+    }
+}
