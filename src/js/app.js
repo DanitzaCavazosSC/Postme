@@ -1,3 +1,4 @@
+
 /* Declaracion de variables globales */
 let MAIN;
 let MODAL_POST;
@@ -47,7 +48,6 @@ window.addEventListener('load', async() => {
           body: 'Este será un mensaje largo',
           vibrate: [200, 100, 200, 100, 200, 100, 200]
         });
-        console.info('Service worker registrado');
     }
   }
 
@@ -62,4 +62,4 @@ window.addEventListener('load', async() => {
     }
   });
   
-});
+})
