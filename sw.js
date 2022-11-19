@@ -4,7 +4,7 @@ const CACHE_FILES = [
     'https://fonst.googleapis/icon?family=Material+Icons',
     'https://code.getmdl.io/1.3.0/material.brown-orange.min.css',
     'https://code.getmdl.io/1.3.0/material.min.js',
-    'https://unpag.com/pwacompat',
+    'https://unpkg.com/pwacompat',
     'src/js/indexeddb.js',
     'src/css/app.css',
     'src/js/app.js',
