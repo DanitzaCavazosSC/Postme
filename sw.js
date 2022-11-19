@@ -39,10 +39,10 @@ self.addEventListener('install', (event) => {
     //console.log('---------------------------------');
     //console.log(cache);
     //console.log('----------------------------------------');
-   })
-   .catch(err => console.error(err.message));
-   self.skipWaiting();
-   event.waitUntil(guardandoCache);
+})
+.catch(err => console.error(err.message));
+self.skipWaiting();
+event.waitUntil(guardandoCache);
 });
 
 self.addEventListener('activate', (event) => {
