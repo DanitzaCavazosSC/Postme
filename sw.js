@@ -6,6 +6,7 @@ const CACHE_FILES = [
     'https://code.getmdl.io/1.3.0/material.min.js',
     'https://unpkg.com/pwacompat',
     'src/js/indexeddb.js',
+    'src/js/firebase.js',
     'src/css/app.css',
     'src/js/app.js',
     'index.html',
@@ -62,14 +63,11 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    //Segunda estrategia: solo red
-    //const soloRed = fetch(event.request);
-    //event.respondWith(soloRed);
-
     //Tercera estrategia: Cche pidiendo ayuda  ala red
     const cacheAyudaRed = caches.match(event.request)
         .then(page => page || fetch(event.request));
     event.respondWith(cacheAyudaRed);
+
 })
 
 self.addEventListener('sync', (event) => {
