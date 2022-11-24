@@ -6,11 +6,11 @@ const CACHE_FILES = [
     'https://code.getmdl.io/1.3.0/material.min.js',
     'https://unpkg.com/pwacompat',
     'src/js/indexeddb.js',
-    'src/js/firebase.js',
     'src/css/app.css',
     'src/js/app.js',
     'index.html',
-    
+    'src/js/firebase.js',
+    '/'
 
 ]; 
 
@@ -54,21 +54,17 @@ self.addEventListener('activate', (event) => {
     //event.waitUntil(clients.cliam());
 });
 
-self.addEventListener('fetch', (event) => {
-    //console.info('[SW]: Instalando...');
-    //console.log(event.request.url);
-
-    if(!(event.request.url.indexOf('http') === 0))
-    {
-        return;
-    }
-
-    //Tercera estrategia: Cche pidiendo ayuda  ala red
-    const cacheAyudaRed = caches.match(event.request)
-        .then(page => page || fetch(event.request));
-    event.respondWith(cacheAyudaRed);
-
-})
+self.addEventListener('fetch', function(event) {
+    event.respondWith(
+        caches.match(event.request)
+        .then(function(response) {
+            if (response) {
+                return response;
+            }
+            return fetch(event.request);
+        })
+    );
+});
 
 self.addEventListener('sync', (event) => {
     console.log('------------------------------------');
