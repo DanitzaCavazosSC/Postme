@@ -8,7 +8,8 @@ const CACHE_FILES = [
     'src/js/indexeddb.js',
     'src/css/app.css',
     'src/js/app.js',
-    'index.html'
+    'index.html',
+    
 
 ]; 
 
@@ -53,8 +54,22 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-    console.info('[SW]: Instalando...');
-    console.log(event.request.url);
+    //console.info('[SW]: Instalando...');
+    //console.log(event.request.url);
+
+    if(!(event.request.url.indexOf('http') === 0))
+    {
+        return;
+    }
+
+    //Segunda estrategia: solo red
+    //const soloRed = fetch(event.request);
+    //event.respondWith(soloRed);
+
+    //Tercera estrategia: Cche pidiendo ayuda  ala red
+    const cacheAyudaRed = caches.match(event.request)
+        .then(page => page || fetch(event.request));
+    event.respondWith(cacheAyudaRed);
 })
 
 self.addEventListener('sync', (event) => {
