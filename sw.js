@@ -1,7 +1,7 @@
 const CACHE_NAME = 'cache-v1';
 const CACHE_FILES = [
     'src/images/icons/icon-144x144.png',
-    'https://fonst.googleapis/icon?family=Material+Icons',
+    'https://fonts.googleapis.com/icon?family=Material+Icons',
     'https://code.getmdl.io/1.3.0/material.brown-orange.min.css',
     'https://code.getmdl.io/1.3.0/material.min.js',
     'https://unpkg.com/pwacompat',

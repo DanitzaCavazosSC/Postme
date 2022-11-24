@@ -42,7 +42,7 @@ window.addEventListener('load', async() => {
   if('serviceWorker' in navigator){
     const response = await navigator.serviceWorker.register('sw.js');
     if(response){
-        console.info('Service worker registrado');
+        //console.info('Service worker registrado');
         const ready = await navigator.serviceWorker.ready;
         ready.showNotification('Hola curso-pwa', {
           body: 'Este será un mensaje largo',
