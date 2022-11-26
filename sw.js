@@ -54,17 +54,19 @@ self.addEventListener('activate', (event) => {
     //event.waitUntil(clients.cliam());
 });
 
-self.addEventListener('fetch', function(event) {
-    event.respondWith(
-        caches.match(event.request)
-        .then(function(response) {
-            if (response) {
-                return response;
-            }
-            return fetch(event.request);
-        })
-    );
-});
+
+//codigo de tutorial de youtube  https://www.youtube.com/watch?v=VEIsnSZRt-Y&t=375s
+//self.addEventListener('fetch', function(event) {
+   // event.respondWith(
+        //caches.match(event.request)
+        //.then(function(response) {
+            //if (response) {
+                //return response;
+            //}
+            //return fetch(event.request);
+        //})
+   // );
+//});
 
 self.addEventListener('sync', (event) => {
     console.log('------------------------------------');
