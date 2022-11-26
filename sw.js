@@ -1,3 +1,4 @@
+
 const CACHE_NAME = 'cache-v1';
 const CACHE_FILES = [
     'src/images/icons/icon-144x144.png',
