@@ -8,7 +8,9 @@ const CACHE_FILES = [
     'src/js/indexeddb.js',
     'src/css/app.css',
     'src/js/app.js',
-    'index.html'
+    'index.html',
+    'src/js/firebase.js',
+    '/'
 
 ]; 
 
@@ -52,10 +54,19 @@ self.addEventListener('activate', (event) => {
     //event.waitUntil(clients.cliam());
 });
 
-self.addEventListener('fetch', (event) => {
-    console.info('[SW]: Instalando...');
-    console.log(event.request.url);
-})
+
+//codigo de tutorial de youtube  https://www.youtube.com/watch?v=VEIsnSZRt-Y&t=375s
+//self.addEventListener('fetch', function(event) {
+   // event.respondWith(
+        //caches.match(event.request)
+        //.then(function(response) {
+            //if (response) {
+                //return response;
+            //}
+            //return fetch(event.request);
+        //})
+   // );
+//});
 
 self.addEventListener('sync', (event) => {
     console.log('------------------------------------');
